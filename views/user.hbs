@@ -1,0 +1,121 @@
+<style>
+    tr{
+        text-align: center;
+    }
+    th{
+        font-size: 1.2vh;
+        font-family: Roboto;
+        text-decoration: underline;
+        font-style: italic;
+        font-weight: 300;
+        color:#ffffff;
+        text-align: center
+    }
+    
+    h1 {
+        font-size: 4vh;
+        font-family: Roboto;
+        font-style: italic;
+        font-weight: 200;
+        color:#ffffff;
+        text-align: center;
+    }
+
+    h2{
+        font-size: 3vh;
+        font-family: Roboto;
+        text-decoration: underline;
+        font-style: italic;
+        font-weight: 300;
+        color:#ffffff;
+        text-align: center;
+    }
+
+    body{
+            background-color: #4bd1db;
+            margin:auto;
+    }
+
+    .inputtext{
+        width: 15vh;
+        margin: 1vh;
+        height: 3vh;
+        width: 15vh;
+        border-radius: 24px;
+        text-align: center;
+    }
+    table{
+        width: 100%;
+    }
+    th,td{
+        border: 1px solid white;
+    }
+    td{
+        text-align: center;
+    }
+
+</style>
+
+
+<div>
+    <h1>Welcome, Administrator {{username}}</h1>
+     
+     <h2>
+         Checked Books
+    </h2>
+    <table>
+        <tr>
+            <th>Eagle ID</th>
+            <th>Title</th>
+            <th>ISBN</th>
+            <th>Availability</th>
+        </tr>
+        {{#each checkedbooks}}
+        <tr>
+            <td>{{this.eid}}</td>
+            <td>{{this.title}}</td>
+            <td>{{this.ISBN}}</td>
+            <td>{{this.book_status}}</td>
+            <td><form action="/availability" method="POST">
+                <button name="btn_available" type="submit" value="{{this.ISBN}}">Change Availability</button>
+            </form></td>
+        </tr>
+        {{/each}}
+    </table>
+
+    <h2>
+        Banned Users
+    </h2>
+
+    <table>
+        <tr>
+            <th>Eagle ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+        {{#each banned_user}}
+        <tr>
+            <td>{{this.eid}}</td>
+            <td>{{this.fname}}</td>
+            <td>{{this.lname}}</td>
+            <td><form action="/unban" method="POST">
+                <button name="btn_unban" type="submit" value="{{this.eid}}">Remove Ban</button>
+            </form></td>
+        </tr>
+        {{/each}}
+    </table>
+
+    
+    <form name="banned_list" method="POST">
+        <h2>
+            Ban a user
+        </h2>
+        <div style = 'text-align:center; flex-direction:row;'>
+                <input class = 'inputtext' type="text" name='eid' placeholder="Eagle ID">
+                <input class = 'inputtext' type="text" name="fname" placeholder="First Name">
+                <input class = 'inputtext' type="text" name="lname" placeholder="Last Name">
+                <input class = 'inputtext' type="submit" name="submit" value="submit">
+        </div>
+        
+    </form>
+</div>

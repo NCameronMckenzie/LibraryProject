@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body{
+            background-color: #4bd1db;
+            margin:auto;
+        }
+
+        navtext {
+            color:#ffffff;
+            font-size: 2vh;
+            font-family: Roboto;
+            font-weight: 350;
+            margin: 1em;
+        }
+        
+        a{
+            color:inherit;
+        }
+    </style>
+</head>
+
+<header>
+    <div style = "text-align: right;">
+        <navtext><a href="/">Home</a></navtext>
+        <navtext><a href="/user/?id={{uid}}">Account</a></navtext>
+        <navtext><a href="/about">About</a></navtext>
+        <navtext><a href="/repo">Github</a></navtext>
+    </div>
+</header>
+
+<body class="{{template}}">
+    <div style = "width:50%; margin:auto;">
+        {{{body}}}
+    </div>
+</body>
+</html>
